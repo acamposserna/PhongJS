@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Visualizador interactivo del modelo de iluminación de Phong con WebGL">
+  <title>Modelo de Phong — Iluminación WebGL</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="phong-root">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-mode="full"     role="tab" aria-selected="true">Modelo completo</button>
+      <button class="tab"        data-mode="ambient"  role="tab" aria-selected="false">Ambiental</button>
+      <button class="tab"        data-mode="diffuse"  role="tab" aria-selected="false">Difusa</button>
+      <button class="tab"        data-mode="specular" role="tab" aria-selected="false">Especular</button>
+    </div>
+
+    <div id="formula-display" class="formula-box">I = Iₐ·kₐ  +  Id·kd·(L·N)  +  Ie·ke·(R·V)ⁿ</div>
+
+    <div class="canvas-row">
+      <div class="canvas-wrap">
+        <canvas id="sphere" width="220" height="220"
+                aria-label="Vista renderizada de la esfera con iluminación de Phong">
+          <p>Esfera renderizada con el modelo de iluminación de Phong.
+             Activa JavaScript para ver la simulación interactiva.</p>
+        </canvas>
+        <div class="canvas-lbl">Vista renderizada</div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="polar" width="220" height="220"
+                aria-label="Diagrama polar de distribución angular (BRDF simplificada)">
+          <p>Diagrama polar de distribución angular (BRDF simplificada).
+             Activa JavaScript para ver la simulación interactiva.</p>
+        </canvas>
+        <div class="canvas-lbl">Distribución angular (BRDF simplificada)</div>
+      </div>
+    </div>
+
+    <div class="controls-grid">
+      <div class="ctrl-card">
+        <label class="ctrl-label" for="sl-ka">kₐ — coef. ambiental <span id="val-ka">0.15</span></label>
+        <input type="range" min="0" max="1" step="0.01" value="0.15" id="sl-ka"               aria-label="Coeficiente ambiental" aria-valuetext="0.15">
+      </div>
+      <div class="ctrl-card">
+        <label class="ctrl-label" for="sl-kd">kd — coef. difuso <span id="val-kd">0.70</span></label>
+        <input type="range" min="0" max="1" step="0.01" value="0.70" id="sl-kd"               aria-label="Coeficiente difuso" aria-valuetext="0.70">
+      </div>
+      <div class="ctrl-card">
+        <label class="ctrl-label" for="sl-ke">ke — coef. especular <span id="val-ke">0.80</span></label>
+        <input type="range" min="0" max="1" step="0.01" value="0.80" id="sl-ke"               aria-label="Coeficiente especular" aria-valuetext="0.80">
+      </div>
+      <div class="ctrl-card">
+        <label class="ctrl-label" for="sl-n">n — shininess <span id="val-n">32</span></label>
+        <input type="range" min="1" max="200" step="1" value="32" id="sl-n"               aria-label="Exponente de brillo (shininess)" aria-valuetext="32">
+      </div>
+      <div class="ctrl-card ctrl-card--full">
+        <label class="ctrl-label" for="sl-langle">Ángulo de la luz (°) <span id="val-langle">45</span></label>
+        <input type="range" min="0" max="85" step="1" value="45" id="sl-langle"               aria-label="Ángulo de la luz en grados" aria-valuetext="45">
+      </div>
+    </div>
+  </div>
+
+  <script defer src="phong/phong.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--color-border-info, #4a90d9) var(--fill, 0%),
+    var(--color-track, #ccc)          var(--fill, 0%)
+  );
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-border-info, #4a90d9);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-border-info, #4a90d9);
+}
+
+.phong-root { padding: 1rem 0; font-size: 14px; color: var(--color-text-primary); }
+.controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; margin-bottom: 1.25rem; }
+.controls-grid input[type="range"] { width: 100%; }
+.ctrl-card--full { grid-column: 1 / -1; }
+.ctrl-card { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; padding: 10px 14px; }
+.ctrl-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px; display: flex; justify-content: space-between; }
+.ctrl-label span { font-weight: 500; color: var(--color-text-primary); }
+.tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.tab { padding: 5px 14px; font-size: 12px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); cursor: pointer; background: transparent; color: var(--color-text-secondary); transition: all .15s; }
+.tab.active { background: var(--color-background-secondary); color: var(--color-text-primary); font-weight: 500; border-color: var(--color-border-primary); }
+.canvas-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+.canvas-wrap { text-align: center; }
+.canvas-lbl { font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+.formula-box { background: var(--color-background-secondary); border-left: 3px solid var(--color-border-info); border-radius: 4px; padding: 8px 12px; font-family: var(--font-mono); font-size: 12px; color: var(--color-text-primary); margin-bottom: 12px; white-space: pre-wrap; }
